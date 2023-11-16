@@ -9,12 +9,15 @@ public class PlayerInteract : MonoBehaviour
     //private float distance = 3f;
     [SerializeField]
     private LayerMask mask;
+    public int InteractableLayerIndex = 3;
     private string CurString;
     private string PastString;
     private PlayerInput.PlayerBasicCtrlActions BasicCtrl;
     public TextMeshProUGUI interactText;
     public PlayerController controller;
     private bool onInteract;
+
+    [SerializeField]
     private List<GameObject> itemList = new List<GameObject>();
 
     void Start()
@@ -64,7 +67,7 @@ public class PlayerInteract : MonoBehaviour
         if (PastString != CurString)
             UpdateInteractText(CurString);
     }
-    private void OnControllerColliderHit(ControllerColliderHit collision)
+    private void OnControllerColliderHit(ControllerColliderHit collision)//collision interaction
     {
         //Debug.Log(collision.collider.name);
         if (collision.collider.GetComponent<Interactable>() != null)
@@ -79,9 +82,13 @@ public class PlayerInteract : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Interactable>() != null)
+        if (other.gameObject.layer == InteractableLayerIndex)
         {
-            itemList.Add(other.gameObject);
+            Debug.Log(other.gameObject.name);
+            if (other.GetComponent<Interactable>() != null)
+            {
+                itemList.Add(other.gameObject);
+            }
         }
     }
 

@@ -479,7 +479,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38284
+  m_Name: pb_Mesh38306
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -997,7 +997,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38102
+  m_Name: pb_Mesh38108
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1584,13 +1584,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!43 &460792407
+--- !u!43 &606040454
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38266
+  m_Name: pb_Mesh38288
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -1764,6 +1764,7 @@ GameObject:
   - component: {fileID: 675116076}
   - component: {fileID: 675116081}
   - component: {fileID: 675116082}
+  - component: {fileID: 675116083}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1933,8 +1934,31 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
+  InteractableLayerIndex: 3
   interactText: {fileID: 905540562}
   controller: {fileID: 675116081}
+  itemList: []
+--- !u!65 &675116083
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675116075}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3554668, y: 2.161673, z: 1.11907}
+  m_Center: {x: 0.022734642, y: -0.08083671, z: 0.5657506}
 --- !u!1 &805633362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,8 +2067,10 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
+  InteractableLayerIndex: 3
   interactText: {fileID: 905540562}
   controller: {fileID: 675116081}
+  itemList: []
 --- !u!1 &905540560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,7 +2211,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38184
+  m_Name: pb_Mesh38192
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -2382,7 +2408,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38222
+  m_Name: pb_Mesh38244
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3085,7 +3111,6 @@ GameObject:
   - component: {fileID: 1242617228}
   - component: {fileID: 1242617234}
   - component: {fileID: 1242617235}
-  - component: {fileID: 1242617236}
   - component: {fileID: 1242617237}
   m_Layer: 3
   m_Name: Cube (2)
@@ -3495,27 +3520,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1242617236
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242617227}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.45
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1242617237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,7 +3553,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38086
+  m_Name: pb_Mesh38092
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6052,7 +6056,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh38202
+  m_Name: pb_Mesh38220
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6227,8 +6231,9 @@ GameObject:
   - component: {fileID: 2057160278}
   - component: {fileID: 2057160285}
   - component: {fileID: 2057160284}
+  - component: {fileID: 2057160286}
   m_Layer: 3
-  m_Name: Cube
+  m_Name: OrangeCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6253,9 +6258,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 460792407}
+  m_Mesh: {fileID: 606040454}
 --- !u!33 &2057160279
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -6263,7 +6268,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057160277}
-  m_Mesh: {fileID: 460792407}
+  m_Mesh: {fileID: 606040454}
 --- !u!23 &2057160280
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6569,8 +6574,8 @@ MonoBehaviour:
     m_AreaError: 15
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
-  m_Mesh: {fileID: 460792407}
-  m_VersionIndex: 562
+  m_Mesh: {fileID: 606040454}
+  m_VersionIndex: 565
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6604,19 +6609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnInteract:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 675116081}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: PerformJump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2057160285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6631,10 +6624,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useEvents: 1
   DestoryAfterInteraction: 0
-  promptMessage: Press E to interact
+  promptMessage: Press E to Interact
   itemtype: 0
-  InteractionType: 0
+  InteractionType: 3
   DestroyEffect: {fileID: 0}
+--- !u!54 &2057160286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057160277}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2071041036
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum ItemType
 {
     Default,
@@ -18,8 +19,8 @@ public abstract class Interactable : MonoBehaviour
     public bool DestoryAfterInteraction;
     //private bool UseCollision;
     public string promptMessage;
-    public ItemType itemtype;
-    public InteractionMethod InteractionType = InteractionMethod.Raycast;
+    public ItemType itemtype = ItemType.Default;
+    public InteractionMethod InteractionType = InteractionMethod.WithInRange;
     public ParticleSystem DestroyEffect;
     public virtual string OnLook()
     {

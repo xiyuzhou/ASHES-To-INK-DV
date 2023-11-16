@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 curSpeed;
     private Vector3 VerticalVelocity;
     private bool isCollideAbove;
+
+    Vector3 DirectionCache;
     [Header("Camera")]
 
     public bool FirstPlayer = true;
@@ -63,21 +65,57 @@ public class PlayerController : MonoBehaviour
         BasicCtrl.Enable();
         interact = GetComponent<PlayerInteract>();
     }
+    /*
+        public void ProcessMove(Vector2 input)
+        {
+            Vector3 moveDirection = new Vector3(input.x, 0f, input.y);
+            float acceleration = isGrounded ? groundAcceleration : airAcceleration;
 
+
+            Vector3 currentDirection = transform.TransformDirection(moveDirection);
+            curSpeed = new Vector3(controller.velocity.x, 0, controller.velocity.z);
+            Vector3 desiredVelocity = currentDirection * speed;
+
+            Vector3 accelerationVector = isGrounded ? (desiredVelocity - curSpeed) * acceleration : desiredVelocity * acceleration;
+            //Debug.Log(accelerationVector.magnitude);
+            curSpeed += accelerationVector * Time.deltaTime;
+            curSpeed = Vector3.ClampMagnitude(curSpeed, speed);
+
+            VerticalVelocity.y += gravity * Time.deltaTime;
+
+            if (isGrounded && VerticalVelocity.y < 0)
+            {
+                VerticalVelocity.y = -2f;
+            }
+            if (controller.collisionFlags == CollisionFlags.Above)
+            {
+                if (!isCollideAbove)
+                {
+                    isCollideAbove = true;
+                    Debug.Log("Above");
+                    VerticalVelocity.y = -1f;
+                }
+            }
+            else
+            {
+                isCollideAbove = false;
+            }
+            controller.Move(curSpeed * Time.deltaTime + VerticalVelocity * Time.deltaTime);
+        }
+
+        */
     public void ProcessMove(Vector2 input)
     {
         Vector3 moveDirection = new Vector3(input.x, 0f, input.y);
-        float acceleration = isGrounded ? groundAcceleration : airAcceleration;
+        float resistance = isGrounded ? groundAcceleration : airAcceleration; // if on ground use ground resistance, if in air use air resistance.
+        if (isGrounded || EnableMidAirControl)
+        {
+            DirectionCache.x = Mathf.MoveTowards(DirectionCache.x, moveDirection.x, resistance * Time.deltaTime);
+            DirectionCache.z = Mathf.MoveTowards(DirectionCache.z, moveDirection.z, resistance * Time.deltaTime);
+        }
 
-
-        Vector3 currentDirection = transform.TransformDirection(moveDirection);
-        curSpeed = new Vector3(controller.velocity.x, 0, controller.velocity.z);
-        Vector3 desiredVelocity = currentDirection * speed;
-
-        Vector3 accelerationVector = isGrounded ? (desiredVelocity - curSpeed) * acceleration : desiredVelocity * acceleration;
-        Debug.Log(accelerationVector.magnitude);
-        curSpeed += accelerationVector * Time.deltaTime;
-        //curSpeed = Vector3.ClampMagnitude(curSpeed, speed);
+        Vector3 currentDirection = transform.TransformDirection(DirectionCache);
+        Vector3 move = currentDirection * speed * Time.deltaTime;
 
         VerticalVelocity.y += gravity * Time.deltaTime;
 
@@ -85,20 +123,13 @@ public class PlayerController : MonoBehaviour
         {
             VerticalVelocity.y = -2f;
         }
-        if (controller.collisionFlags == CollisionFlags.Above)
+
+        controller.Move(move + VerticalVelocity * Time.deltaTime);
+
+        if (controller.collisionFlags == CollisionFlags.Above)//to prevent when player jump and collide with upper things, that the player won't fall immediately.
         {
-            if (!isCollideAbove)
-            {
-                isCollideAbove = true;
-                Debug.Log("Above");
-                VerticalVelocity.y = -1f;
-            }
+            VerticalVelocity.y = 0f;
         }
-        else
-        {
-            isCollideAbove = false;
-        }
-        controller.Move(curSpeed * Time.deltaTime + VerticalVelocity * Time.deltaTime);
     }
     public void ProcessLook(Vector2 input)
     {
