@@ -70,12 +70,15 @@ public class PlayerInteract : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit collision)//collision interaction
     {
         //Debug.Log(collision.collider.name);
-        if (collision.collider.GetComponent<Interactable>() != null)
-        { 
-            Interactable interactable = collision.collider.GetComponent<Interactable>();
-            if (interactable.InteractionType == InteractionMethod.Collision)
+        if (collision.gameObject.layer == InteractableLayerIndex)
+        {
+            if (collision.collider.GetComponent<Interactable>() != null)
             {
-                interactable.BaseInteract();
+                Interactable interactable = collision.collider.GetComponent<Interactable>();
+                if (interactable.InteractionType == InteractionMethod.Collision)
+                {
+                    interactable.BaseInteract();
+                }
             }
         }
     }
@@ -84,7 +87,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (other.gameObject.layer == InteractableLayerIndex)
         {
-            Debug.Log(other.gameObject.name);
+            //Debug.Log(other.gameObject.name);
             if (other.GetComponent<Interactable>() != null)
             {
                 itemList.Add(other.gameObject);
